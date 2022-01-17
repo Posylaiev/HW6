@@ -1,0 +1,373 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    color: black;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.wrapper {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: top;
+}
+
+.header {
+    background: #D2B713;
+}
+
+.header-wrap {
+    position: relative;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.header-wrap .logo {
+    max-width: 150px;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-grow: 1;
+    order: -1;
+}
+
+.hidden {
+    position: absolute;
+    left: -99999px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.burger {
+    position: relative;
+    width: 26px;
+    height: 16px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+#burger:checked ~ .nav-list {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .3s ease-in-out;
+}
+
+#burger:checked + .burger::before {
+    transition: transform .3s ease-in-out;
+    top: 9px;
+    transform: rotate(45deg);
+}
+
+#burger:checked + .burger span {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#burger:checked + .burger::after {
+    transition: transform .3s ease-in-out;
+    bottom: 5px;
+    transform: rotate(-45deg);
+}
+
+.burger::before,
+.burger span,
+.burger::after {
+    position: absolute;
+    right: 0;
+    left: 0;
+    height: 2px;
+    background: #000;
+}
+
+.burger::after,
+.burger::before {
+    content: '';
+}
+
+.burger::before {
+    top: 0;
+}
+
+.burger span {
+    top: 7px;
+}
+
+.burger::after {
+    bottom: 0;
+}
+
+.nav-list {
+    list-style: none;
+    text-transform: uppercase;
+    padding: 0;
+    margin: 0;
+
+    text-align: center;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    padding: 20px 0;
+
+    opacity: 0;
+    visibility: hidden;
+    background: #D2B713;
+}
+
+.nav-list li {
+    padding-bottom: 15px;
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: black;
+    margin-left: 10px;
+    font-size: 20px;
+}
+.nav-list a:hover {
+    color: rgb(116, 124, 116);
+    transition: .3s ease-in-out;
+}
+
+.content-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+}
+.content-wrapper .sidebar {
+    width: 100%;
+    text-align: center;
+    padding: 30px 15px;
+}
+
+.content-wrapper .main {
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+}
+
+.main-text {
+    margin: 0 0 10px;
+    padding: 20px;
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+.main-title {
+    text-transform: uppercase;
+    margin: 0 0 30px;
+}
+.sidebar-left {
+    order: 0;
+    background: #C798B9;
+}
+
+.sidebar-right {
+    background: #9CB0C7;
+}
+
+.content-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 -10px;
+}
+
+.content-cards .card {
+    width: 90%;
+    padding: 10px;
+    border: solid #A9A9A9 2px;
+    border-radius: 20px;
+    margin: 0 10px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.content-cards .card:hover {
+    background: rgb(208, 231, 233);
+    transition: .3s ease-in-out;
+}
+
+.card .img {
+    background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Hopetoun_falls.jpg/220px-Hopetoun_falls.jpg");
+    height: 115px;
+    display: inline-block;
+    width: 115px;
+    border: #C6B7B6 solid 12px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+}
+
+.card .title {
+    margin: 0 0 20px;
+}
+
+.card .text {
+    flex-grow: 3;
+    margin: 0 0 20px;
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+.card .button {
+    display: inline;
+    vertical-align: bottom;
+    padding: 8px 20px;
+    background: #675174;
+    color: white;
+    text-decoration: none;
+    border: #675174 solid 1px;
+    border-radius: 15px;
+}
+.card .button:hover {
+    color: rgb(208, 231, 233);
+    transition: .3s ease-in-out;
+}
+
+.holder {
+    max-width: 90%;
+    border: solid 2px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: auto;
+    border-radius: 32px 32px 0 0;
+    margin-bottom: 15px;
+}
+
+.holder .item:nth-child(1) {
+    background: pink;
+    padding: 50px 0;
+    flex-basis: 50%;
+    border-top-left-radius: 30px;
+}
+
+.holder .item:nth-child(2) {
+    order: 4;
+    background: blue;
+    padding: 50px 0;
+    flex-basis: 33.333%;
+}
+
+.holder .item:nth-child(3) {
+    order: 3;
+    background: purple;
+    padding: 50px 0;
+    flex-basis: 33.333%;
+}
+
+.holder .item:nth-child(4) {
+    order: 5;
+    background: green;
+    padding: 50px 0;
+    flex-basis: 33.333%;
+}
+
+.holder .item:nth-child(5) {
+    order: 2;
+    background: orange;
+    padding: 50px 0;
+    flex-basis: 50%;
+    border-top-right-radius: 30px;
+}
+.footer {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    background: #82E581;
+    padding: 50px 0;
+}
+
+
+
+@media (min-width: 768px) {
+
+    .content-cards .card {
+        width: 45%;
+    }
+
+}
+
+@media (min-width: 1024px) {
+
+    .nav {
+        order: 0;
+        justify-content: flex-end;
+    }
+
+    .burger {
+        display: none;
+    }
+
+    .nav-list {
+        display: flex;
+        align-items: center;
+        position: static;
+        background: transparent;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-list li + li {
+        padding-left: 15px;
+    }
+
+    .main-text {
+        font-size: 18px;
+    }
+
+    .content-wrapper .sidebar {
+        max-width: 210px;
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+    }
+    
+    .content-wrapper .main {
+        width: calc(100% - 420px);
+        text-align: center;
+        padding: 15px;
+    }
+    .content-wrapper .sidebar {
+        max-width: 210px;
+        padding: 15px;
+    }
+
+    .sidebar-left {
+        order: -1;
+    }
+
+}
+
+@media (min-width: 1200px) {
+
+    .content-cards .card {
+        width: 30%;
+    }
+}
